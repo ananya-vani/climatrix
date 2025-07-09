@@ -1,0 +1,267 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  font-weight: 600;
+}
+
+body {
+  background: url("assets/bg.jpg");
+  width: 100%;
+  height: 100dvh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100dvh;
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+}
+.header-title {
+  width: 300px;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: rgb(225, 225, 225, 0.3);
+  padding: 20px 0;
+  font-family: "Poppins", sans-serif;
+  bottom: 1%;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  position: absolute;
+  z-index: 10;
+}
+/* UTILITIES */
+.regular-txt {
+  font-weight: 400;
+}
+
+.main-container {
+  width: 300px;
+  height: 496px;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgb(0, 0, 0, 0.15),
+    rgb(225, 225, 225, 0.15)
+  );
+  border-radius: 12px;
+  backdrop-filter: blur(30px);
+  padding: 20px;
+}
+
+/* INPUT CONTAINER */
+.input-container {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.city-input {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 99px;
+  border: 3px solid transparent;
+  background: rgba(0, 0, 0, 0.15);
+  outline: none;
+  font-weight: 500;
+  transition: 0.25s border;
+  padding-right: 45px;
+}
+.city-input:focus {
+  border: 3px solid rgba(0, 0, 0, 0.15);
+}
+.city-input::placeholder {
+  color: rgba(225, 225, 225, 0.75);
+}
+
+.search-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  display: flex;
+  border: none;
+  cursor: pointer;
+}
+
+/* SECTION: WEATHER INFO */
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.location-date-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.weather-summary-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.weather-summary-img {
+  width: 120px;
+  height: 120px;
+}
+.weather-summary-info {
+  text-align: end;
+}
+
+.weather-conditions-container {
+  display: flex;
+  justify-content: space-between;
+}
+.condition-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.condition-item span {
+  font-size: 30px;
+}
+
+.forcast-items-container {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 12px;
+}
+.forcast-items-container::-webkit-scrollbar {
+  height: 8px;
+}
+.forcast-items-container::-webkit-scrollbar-track {
+  background: rgb(0, 0, 0, 0.1);
+  border-radius: 99px;
+}
+.forcast-items-container::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 0, 0.15);
+  border-radius: 99px;
+}
+.forcast-item {
+  min-width: 70px;
+  background: rgb(225, 225, 225, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  align-items: center;
+  border-radius: 12px;
+  transition: 0.3s background;
+}
+.forcast-item:hover {
+  background: rgb(225, 225, 225, 0.15);
+}
+.forcast-item-img {
+  width: 35px;
+  height: 35px;
+}
+
+/*SECTION: MESSAGE*/
+.section-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+  margin-top: 20%;
+}
+.section-message img {
+  height: 200px;
+  width: fit-content;
+}
+.not-found {
+  display: none;
+}
+
+/* ✓ RECENT SEARCH DROPDOWN */
+.recent-searches-list {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  border-radius: 10px;
+  display: none;
+  max-height: 140px;
+  overflow-y: auto;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+}
+
+.recent-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.recent-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.remove-btn {
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 10px;
+  color: #ff4c4c;
+}
+
+/* ✓ LOADER STYLES */
+.recent-searches-list::-webkit-scrollbar {
+  height: 8px;
+}
+.loader-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  width: 40px;
+  height: 40px;
+  border: 5px solid white;
+  border-top: 5px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
